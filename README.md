@@ -1,2 +1,2 @@
-# DPT-T2I.github.io
-Project page for CVPR 2024 paper: Discriminative Probing and Tuning for Text-to-Image Generation
+# silmm.github.io
+Project page for paper: SILMM: Self-Improving Large Multimodal Models for Compositional Text-to-Image Generation
