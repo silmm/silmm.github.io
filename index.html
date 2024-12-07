@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Discriminative Probing and Tuning for Text-to-Image Generation">
+  <meta name="keywords" content="text-to-image generation, Large Language Models, scene synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DPT-T2I</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="icon" href="./static/images/logo.png">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Discriminative Probing and Tuning</h1>
+          <h1 class="title is-2 publication-title">for Text-to-Image Generation</h1>
+          <!-- <h1 class="title is-2 publication-title" style="margin-top: -17px;">for Text-to-Image Generation</h1> --> 
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">
+              <a href="#">Leigang Qu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://wenjiewwj.github.io/">Wenjie Wang</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://liyongqi67.github.io/">Yongqi Li</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://personal.ntu.edu.sg/hanwangzhang/">Hanwang Zhang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://liqiangnie.github.io/">Liqiang Nie</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.chuatatseng.com/">Tat-Seng Chua</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><b style="color:#F2A900; font-weight:normal">&#x25B6 </b>1. NExT++ Lab, National University of Singapore</span>
+            <br>
+            <span class="author-block"><b style="color:#00f295cc; font-weight:normal">&#x25B6 </b>2. Hong Kong Polytechnic University</span>
+            <br>
+            <span class="author-block"><b style="color:hsla(350, 78%, 60%, 0.815); font-weight:normal">&#x25B6 </b>3. Nanyang Technological University</span>
+            <br>
+            <span class="author-block"><b style="color:#00A4EF; font-weight:normal">&#x25B6 </b>4. Harbin Institute of Technology (Shenzhen)</span>
+            
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <!-- <span class="author-block" style="font-size: 15px;"><sup>*</sup>Equal Contribution</span> &nbsp; &nbsp; &nbsp; &nbsp; -->
+            <span class="author-block" style="font-size: 15px;"><sup>*</sup>Correspondence</span>
+            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.04321"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/" target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa fa-laugh"></i>
+                  </span>
+                  <span>Demo</span>
+                </a>
+              </span>
+              
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/LgQu/DPT-T2I"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              
+              <!-- <span class="link-block">
+                <a href="https://github.com/LayoutLLM-T2I/LayoutLLM-T2I" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span> -->
+              
+      
+<!--               <span class="link-block">
+                <a href="https://github.com/LayoutLLM-T2I/LayoutLLM-T2I"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+<!--    <div class="hero-body">-->
+<!--      <h2 class="subtitle has-text-centered">-->
+<!--        LayoutLLM for image layout generation based on text inputs. -->
+<!--      </h2>-->
+<!--      <video id="teaser" autoplay muted loop playsinline height="200%">-->
+<!--        <source src="./static/videos/merged_images.mp4"-->
+<!--                type="video/mp4">-->
+<!--      </video>-->
+<!--    </div>-->
+
+<!--     <div class="hero-body">
+      <h2 class="subtitle has-text-centered">
+        LayoutGPT for 3D indoor scene synthesis.
+      </h2>
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/merged_scenes.mp4"
+                type="video/mp4">
+      </video>
+      
+    </div> -->
+
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Despite advancements in text-to-image generation (T2I), prior methods often face text-image misalignment problems such as relation confusion in generated images. Existing solutions involve cross-attention manipulation for better compositional understanding or integrating large language models for improved layout planning. However, the inherent alignment capabilities of T2I models are still inadequate. By reviewing the link between generative and discriminative modeling, we posit that T2I models' discriminative abilities may reflect their text-image alignment proficiency during generation. In this light, we advocate bolstering the discriminative abilities of T2I models to achieve more precise text-to-image alignment for generation. We present a discriminative adapter built on T2I models to probe their discriminative abilities on two representative tasks and leverage discriminative fine-tuning to improve their text-image alignment. As a bonus of the discriminative adapter, a self-correction mechanism can leverage discriminative gradients to better align generated images to text prompts during inference. Comprehensive evaluations across three benchmark datasets, including both in-distribution and out-of-distribution scenarios, demonstrate our method's superior generation performance. Meanwhile, it achieves state-of-the-art discriminative performance on the two discriminative tasks compared to other generative models.
+          </p>
+          <!-- <p>
+            In this work, we strive to synthesize high-fidelity images that are semantically aligned with a given textual prompt without any guidance.
+            Toward this end, we propose a coarse-to-fine paradigm to achieve layout planning and image generation.
+            Concretely, we first generate the coarse-grained layout conditioned on a given textual prompt via in-context learning based on Large Language Models.
+            Afterward, we propose a fine-grained object-interaction diffusion method to synthesize high-faithfulness images conditioned on the prompt and the automatically generated layout.
+            Extensive experiments demonstrate that our proposed method outperforms the state-of-the-art models in terms of cross-modal text-layout alignment and high-faithfulness image generation.
+          </p> -->
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Motivation</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Despite the satisfactory performance achieved by recent SD-based models, synthesizing high-faithful images in complex scenes is still challenging, such as <font color="#4C76C6"><em>problematic spatial relation understanding</em></font> and <font color="#4C76C6"><em>numeration failure</em></font>, as shown in the following figure.
+           However, to achieve high-faithfulness image synthesis, the existing models suffer from the following challenges:
+
+            <ol>
+              <li>
+                <b>Layout Planning</b> requires abstract spatial imagination and analysis capabilities. The limited annotated layout data and intrinsic inductive bias make it difficult for existing diffusion methods to accurately and aesthetically generate layouts. Although notable efforts have been dedicated to synthesizing complex scenes by manually providing guidance information, these strategies suffer from weak flexibility and low efficiency since they heavily rely on extra labor-intensive guidance.
+              </li>
+              <li>
+                <b>Relation Modeling</b>, <em>e.g.</em>, the high-level spatial and semantic relations, plays a pivotal role in understanding, imagining, and depicting complex scenes for T2I models, but it is still under-explored owing to the complex and ever-changing environments in real life.
+              </li>
+            </ol>
+
+
+          </p>
+          <img class="columns is-centered has-text-centered" src="./static/images/intro.jpg" alt="Teaser" width="60%" style="margin:0 auto">
+        </div>
+        <br/>
+
+      </div>
+    </div> -->
+
+    <!-- Framework -->
+    <div class="columns is-centered has-text-justified">
+      <!-- <div class="column is-full-width"> -->
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Framework</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Schematic illustration of the proposed <b>discriminative probing and tuning (DPT) </b> framework. We first extract semantic representations
+            from the frozen SD and then propose a discriminative adapter to conduct discriminative probing to investigate the global matching
+            and local grounding abilities of SD. Afterward, we perform parameter-efficient discriminative tuning by introducing LoRA parameters.
+            During inference, we present the self-correction mechanism to guide the denoising-based text-to-image generation.
+            <!-- <ol>
+              <li>
+                <b>Text-to-layout induction module</b> infers a coarse-grained layout via an LLM conditioned the given textual prompt.
+              </li>
+              <li>
+                <b>Layout-guided image generation module</b> synthesizes the final image based on the prompt and the generated layout, .
+              </li>
+            </ol> -->
+          </p>
+          <img class="columns is-centered has-text-justified" src="./static/images/framework.png" alt="Teaser" width="100%" style="margin:0 auto">
+        </div>
+        <br/>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-justified">
+      <!-- <div class="column is-four-fifths"> -->
+      <!-- <div class="column is-full-width"> -->
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Generated Images</h2>
+
+        <h3 class="title is-4">Qualitative results on COCO-NSS1K.</h3>
+        <div class="content has-text-justified">
+          <p>
+            We compare DPT with SD-v2.1 and two baselines including Attend-and-Excite
+            (AaE) and HN-DiffusionITM (HN-DiffITM) regarding
+            object appearance, counting, spatial relation, semantic relation,
+            and compositional reasoning. Categories and the corresponding
+            keywords in prompts are highlighted with different colors.
+          </p>
+          <img class="columns is-centered has-text-centered" src="./static/images/case_nss1k.png" alt="Teaser" width="100%" style="margin:0 auto">
+        </div>
+
+
+          <h3 class="title is-4">Qualitative results on CC-500.</h3>
+          <div class="content has-text-justified">
+            <p>
+              Qualitative results on CC-500. We compare the proposed
+              method with SD-v1.4 and two baselines including StructureDiffusion and Attend-and-Excite (AaE) regarding object
+              appearance and attribute characterizing.
+            </p>
+            <img class="columns is-centered has-text-centered" src="./static/images/case_cc500.png" alt="Teaser" width="100%" style="margin:0 auto">
+          </div>
+
+
+            <h3 class="title is-4">Qualitative results on ABC-6K.</h3>
+            <div class="content has-text-justified">
+              <p>
+                Qualitative results on ABC-6K. We compare the proposed
+                method with SD-v1.4 and two baselines including StructureDiffusion and Attend-and-Excite (AaE) regarding color attribute
+                characterizing.
+              </p>
+              <img class="columns is-centered has-text-centered" src="./static/images/case_abc-6k.png" alt="Teaser" width="100%" style="margin:0 auto">
+            </div>
+  
+
+        <!-- <h3 class="title is-4">Examples: Numerical, Mixed, Null</h3>
+        <div class="content has-text-justified">
+          <p>
+            Results on the <strong>Numerical</strong>, <strong>Mixed</strong>, and <strong>Null</strong> inputs.
+          </p>
+          <img src="./static/images/case-3.jpg" alt="Teaser" width="100%">
+        </div>
+        <br/> -->
+
+
+
+      </div>
+    </div>
+
+
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            You may refer to previous works such as  <a href="https://gligen.github.io/">GLIGEN</a>, <a href="https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/text2img">Stable Diffusion</a>, and <a href="https://platform.openai.com/docs/models/gpt-3-5">GPT3.5</a>, which serve as foundational frameworks for our LayoutLLM-T2I framework and code repository.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{qu2024discriminative,
+      title={Discriminative Probing and Tuning for Text-to-Image Generation},
+      author={Qu, Leigang and Wang, Wenjie and Li, Yongqi and Zhang, Hanwang and Nie, Liqiang and Chua, Tat-Seng},
+      journal={arXiv preprint arXiv:2403.04321},
+      year={2024}
+    }
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center;">
+            The webpage is built based on <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
